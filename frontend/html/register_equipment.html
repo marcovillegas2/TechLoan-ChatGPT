@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registrar equipo</title>
+</head>
+<body>
+  <h1>Registrar equipo</h1>
+
+  <form action="http://127.0.0.1:8000/equipments" method="post">
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" name="nombre" required />
+
+    <br />
+
+    <label for="codigo_inventario">Código de inventario</label>
+    <input type="text" id="codigo_inventario" name="codigo_inventario" required />
+
+    <br />
+
+    <label for="descripcion">Descripción</label>
+    <textarea id="descripcion" name="descripcion"></textarea>
+
+    <br />
+
+    <label for="categoria">Categoría</label>
+    <input type="text" id="categoria" name="categoria" />
+
+    <br />
+
+    <label for="ubicacion">Ubicación</label>
+    <input type="text" id="ubicacion" name="ubicacion" />
+
+    <br />
+
+    <button type="submit">Registrar</button>
+  </form>
+</body>
+</html>
