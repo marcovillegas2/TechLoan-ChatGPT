@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechLoan | Préstamos</title>
+  <link rel="stylesheet" href="../css/loan.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__brand">
+      <span class="topbar__logo">TL</span>
+      <div>
+        <h1>TechLoan</h1>
+        <p>Sistema Administrativo de Control de Préstamos</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav class="menu">
+        <a class="menu__item" href="dashboard.html">Dashboard</a>
+        <a class="menu__item" href="equipment.html">Equipos</a>
+        <a class="menu__item menu__item--active" href="loan.html">Préstamos</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <section class="page-header">
+        <div>
+          <h2>Gestión de Préstamos</h2>
+          <p>Registra solicitudes, devoluciones y consulta la disponibilidad de equipos.</p>
+        </div>
+        <div class="page-header__status">
+          <span class="pill pill--blue">Operación administrativa</span>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="card card--form">
+          <div class="card__header">
+            <h3>Registrar préstamo</h3>
+            <p>Complete los datos del solicitante y seleccione un equipo disponible.</p>
+          </div>
+
+          <div id="messageBox" class="message" aria-live="polite"></div>
+
+          <form id="loanForm" class="form">
+            <div class="section-box">
+              <h4>Datos del solicitante</h4>
+              <div class="form__row">
+                <label for="dni">DNI</label>
+                <input type="text" id="dni" placeholder="12345678" autocomplete="off" />
+              </div>
+
+              <div class="form__row">
+                <label for="fullName">Nombres completos</label>
+                <input type="text" id="fullName" placeholder="Juan Pérez" autocomplete="off" />
+              </div>
+
+              <div class="form__row">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" placeholder="correo@ejemplo.com" autocomplete="off" />
+              </div>
+
+              <div class="form__row">
+                <label for="phone">Teléfono</label>
+                <input type="text" id="phone" placeholder="999888777" autocomplete="off" />
+              </div>
+
+              <div class="form__row">
+                <label for="department">Área o dependencia</label>
+                <input type="text" id="department" placeholder="Sistemas" autocomplete="off" />
+              </div>
+            </div>
+
+            <div class="section-box">
+              <h4>Datos del préstamo</h4>
+              <div class="form__row">
+                <label for="equipmentId">Equipo disponible</label>
+                <select id="equipmentId">
+                  <option value="">Cargando equipos...</option>
+                </select>
+              </div>
+
+              <div class="form__row">
+                <label for="loanDate">Fecha de préstamo</label>
+                <input type="date" id="loanDate" />
+              </div>
+
+              <div class="form__row">
+                <label for="dueDate">Fecha límite de devolución</label>
+                <input type="date" id="dueDate" />
+              </div>
+            </div>
+
+            <div class="form__actions">
+              <button type="submit" class="btn btn--primary">Registrar préstamo</button>
+              <button type="button" id="clearBtn" class="btn btn--ghost">Limpiar</button>
+              <button type="button" id="cancelBtn" class="btn btn--ghost">Cancelar</button>
+            </div>
+          </form>
+        </article>
+
+        <article class="card card--table">
+          <div class="card__header">
+            <h3>Préstamos registrados</h3>
+            <p>Consulta el historial de préstamos y registra devoluciones cuando corresponda.</p>
+          </div>
+
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Equipo</th>
+                  <th>Solicitante</th>
+                  <th>DNI</th>
+                  <th>Fecha de préstamo</th>
+                  <th>Fecha límite</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="loanTableBody"></tbody>
+            </table>
+            <div id="emptyState" class="empty-state">Cargando préstamos...</div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="../js/loan.js"></script>
+</body>
+</html>

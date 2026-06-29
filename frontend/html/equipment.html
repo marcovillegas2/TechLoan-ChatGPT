@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechLoan | Equipos</title>
+  <link rel="stylesheet" href="../css/equipment.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__brand">
+      <span class="topbar__logo">TL</span>
+      <div>
+        <h1>TechLoan</h1>
+        <p>Sistema Administrativo de Control de Préstamos</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav class="menu">
+        <a class="menu__item" href="dashboard.html">Dashboard</a>
+        <a class="menu__item menu__item--active" href="equipment.html">Equipos</a>
+        <a class="menu__item" href="loan.html">Préstamos</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <section class="page-header">
+        <div>
+          <h2>Gestión de Equipos</h2>
+          <p>Registra, edita y elimina equipos tecnológicos del inventario.</p>
+        </div>
+        <div class="page-header__status">
+          <span class="pill pill--blue">Administración</span>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="card card--form">
+          <div class="card__header">
+            <h3 id="formTitle">Registrar equipo</h3>
+            <p>Complete los datos requeridos para mantener el inventario actualizado.</p>
+          </div>
+
+          <div id="messageBox" class="message" aria-live="polite"></div>
+
+          <form id="equipmentForm" class="form">
+            <input type="hidden" id="equipmentId" />
+
+            <div class="form__row">
+              <label for="code">Código</label>
+              <input type="text" id="code" placeholder="EQ-001" autocomplete="off" />
+            </div>
+
+            <div class="form__row">
+              <label for="name">Nombre</label>
+              <input type="text" id="name" placeholder="Laptop Dell" autocomplete="off" />
+            </div>
+
+            <div class="form__row">
+              <label for="category">Categoría</label>
+              <input list="equipmentCategories" type="text" id="category" placeholder="Laptop, Tablet, Monitor..." autocomplete="off" />
+              <datalist id="equipmentCategories">
+                <option value="Laptop"></option>
+                <option value="Tablet"></option>
+                <option value="Proyector"></option>
+                <option value="Monitor"></option>
+                <option value="Impresora"></option>
+                <option value="Periférico"></option>
+              </datalist>
+            </div>
+
+            <div class="form__row">
+              <label for="description">Descripción</label>
+              <textarea id="description" rows="4" placeholder="Descripción opcional del equipo"></textarea>
+            </div>
+
+            <div class="form__row">
+              <label for="status">Estado</label>
+              <select id="status">
+                <option value="DISPONIBLE">DISPONIBLE</option>
+                <option value="PRESTADO">PRESTADO</option>
+              </select>
+            </div>
+
+            <div class="form__actions">
+              <button type="submit" id="registerBtn" class="btn btn--primary">Registrar</button>
+              <button type="submit" id="updateBtn" class="btn btn--primary btn--hidden">Actualizar</button>
+              <button type="button" id="cancelBtn" class="btn btn--ghost">Cancelar</button>
+            </div>
+          </form>
+        </article>
+
+        <article class="card card--table">
+          <div class="card__header">
+            <h3>Equipos registrados</h3>
+            <p>Consulta el inventario tecnológico disponible en el sistema.</p>
+          </div>
+
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Nombre</th>
+                  <th>Categoría</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="equipmentTableBody"></tbody>
+            </table>
+            <div id="emptyState" class="empty-state">Cargando equipos...</div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="../js/equipment.js"></script>
+</body>
+</html>

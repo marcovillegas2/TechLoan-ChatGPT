@@ -1,19 +1,18 @@
-from datetime import datetime
-
-from sqlalchemy import Column, DateTime, Integer, String, Text
-from sqlalchemy.orm import declarative_base
-
-Base = declarative_base()
+from database import Base
+from sqlalchemy import Column, DateTime, Integer, String
+from sqlalchemy.orm import relationship
 
 
 class Equipment(Base):
     __tablename__ = "equipment"
 
-    id_equipo = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    nombre = Column(String(150), nullable=False)
-    codigo_inventario = Column(String(50), nullable=False, unique=True, index=True)
-    descripcion = Column(Text, nullable=True)
-    categoria = Column(String(100), nullable=True)
-    ubicacion = Column(String(100), nullable=True)
-    estado = Column(String(20), nullable=False, default="Disponible")
-    fecha_registro = Column(DateTime, nullable=False, default=datetime.utcnow)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    code = Column(String, unique=True, nullable=False)
+    name = Column(String, nullable=False)
+    category = Column(String, nullable=False)
+    description = Column(String, nullable=True)
+    status = Column(String, nullable=False)
+    created_at = Column(DateTime, nullable=False)
+    updated_at = Column(DateTime, nullable=True)
+
+    loans = relationship("Loan", back_populates="equipment")

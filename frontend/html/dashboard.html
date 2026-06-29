@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechLoan | Dashboard</title>
+  <link rel="stylesheet" href="../css/dashboard.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__brand">
+      <span class="topbar__logo">TL</span>
+      <div>
+        <h1>TechLoan</h1>
+        <p>Sistema Administrativo de Control de Préstamos</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav class="menu">
+        <a class="menu__item menu__item--active" href="dashboard.html">Dashboard</a>
+        <a class="menu__item" href="equipment.html">Equipos</a>
+        <a class="menu__item" href="loan.html">Préstamos</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <section class="page-header">
+        <div>
+          <h2>Dashboard Administrativo</h2>
+          <p>Visualización general del estado de equipos, préstamos y devoluciones vencidas.</p>
+        </div>
+        <div class="page-header__status">
+          <span class="pill pill--blue">Monitoreo general</span>
+        </div>
+      </section>
+
+      <section class="summary-grid" id="summaryCards">
+        <article class="summary-card">
+          <span class="summary-card__label">Total de equipos</span>
+          <strong class="summary-card__value" id="totalEquipment">0</strong>
+        </article>
+        <article class="summary-card">
+          <span class="summary-card__label">Equipos disponibles</span>
+          <strong class="summary-card__value" id="availableEquipment">0</strong>
+        </article>
+        <article class="summary-card">
+          <span class="summary-card__label">Equipos prestados</span>
+          <strong class="summary-card__value" id="loanedEquipment">0</strong>
+        </article>
+        <article class="summary-card">
+          <span class="summary-card__label">Préstamos vencidos</span>
+          <strong class="summary-card__value" id="overdueLoans">0</strong>
+        </article>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="card">
+          <div class="card__header">
+            <h3>Distribución de equipos</h3>
+            <p>Disponibles vs prestados.</p>
+          </div>
+          <div class="chart" id="equipmentChart"></div>
+        </article>
+
+        <article class="card">
+          <div class="card__header">
+            <h3>Préstamos por estado</h3>
+            <p>Activos, devueltos y vencidos.</p>
+          </div>
+          <div class="chart" id="loanChart"></div>
+        </article>
+      </section>
+
+      <section class="card card--table">
+        <div class="card__header">
+          <h3>Usuarios con devoluciones vencidas</h3>
+          <p>Seguimiento de préstamos con atraso pendiente.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Nombre completo</th>
+                <th>DNI</th>
+                <th>Equipo</th>
+                <th>Fecha límite</th>
+                <th>Días vencidos</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody id="overdueUsersBody"></tbody>
+          </table>
+          <div id="emptyState" class="empty-state">Cargando dashboard...</div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="../js/dashboard.js"></script>
+</body>
+</html>
